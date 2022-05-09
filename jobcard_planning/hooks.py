@@ -11,6 +11,20 @@ app_license = "GPLv3"
 
 # Includes in <head>
 # ------------------
+fixtures = [
+    {
+        "dt": ("Custom Field"),
+        "filters": [["name", "in",
+                     (
+                         "Job Card-planned_start_date",
+                         "Job Card-planned_end_date",
+                         "Job Card-planned_employee",
+                         "Job Card-planned_employee_name",)]
+                    ]
+    }
+]
+
+
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/jobcard_planning/css/jobcard_planning.css"
