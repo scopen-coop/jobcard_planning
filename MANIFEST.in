@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include jobcard_planning *.css
+recursive-include jobcard_planning *.csv
+recursive-include jobcard_planning *.html
+recursive-include jobcard_planning *.ico
+recursive-include jobcard_planning *.js
+recursive-include jobcard_planning *.json
+recursive-include jobcard_planning *.md
+recursive-include jobcard_planning *.png
+recursive-include jobcard_planning *.py
+recursive-include jobcard_planning *.svg
+recursive-include jobcard_planning *.txt
+recursive-exclude jobcard_planning *.pyc
