@@ -21,6 +21,10 @@ fixtures = [
                          "Job Card-planned_employee",
                          "Job Card-planned_employee_name",)]
                     ]
+    },
+    {
+        "dt": ("Calendar View"),
+        "filters": [["name", "in", ('Job Card Planning')]]
     }
 ]
 
