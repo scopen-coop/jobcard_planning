@@ -1,0 +1,16 @@
+[
+ {
+  "all_day": 0,
+  "docstatus": 0,
+  "doctype": "Calendar View",
+  "end_date_field": "planned_end_date",
+  "modified": "2022-06-09 11:29:43.772702",
+  "name": "Job Card Planning",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "reference_doctype": "Job Card",
+  "start_date_field": "planned_start_date",
+  "subject_field": "work_order"
+ }
+]
