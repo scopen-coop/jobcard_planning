@@ -6,11 +6,11 @@ bench migrate
 
 FR
 
-Ajoute une vue calendrier des Cartes de travail permettant de les planifiés en glisser déposé
+Ajoute une vue calendrier des Cartes de travail permettant de les planifiées en glissé-déposé
 
 EN
 
-Add Job Card Calendar vue and allow the to plan them but grap and drop
+Add Job Card Calendar view and allow the to plan them by drap and drop
 
 ![image](https://user-images.githubusercontent.com/1050053/173192435-2a46ee70-080a-4175-8120-b3eaa870928e.png)
 
