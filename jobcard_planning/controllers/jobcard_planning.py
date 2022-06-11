@@ -9,6 +9,7 @@ def get_jobcard_planning_details(start, end, filters=None):
     event_color = {
         "Material Transferred": "blue",
         "Work In Progress": "orange",
+        "Open": "red",
     }
 
     from frappe.desk.reportview import get_filters_cond
