@@ -7,9 +7,9 @@ def get_jobcard_planning_details(start, end, filters=None):
     events = []
 
     event_color = {
-        "Material Transferred": "blue",
-        "Work In Progress": "orange",
-        "Open": "red",
+        "Material Transferred": "#2acced",
+        "Work In Progress": "#ed982a",
+        "Open": "#cc5908",
     }
 
     from frappe.desk.reportview import get_filters_cond
@@ -75,12 +75,16 @@ def get_jobcard_planning_details(start, end, filters=None):
 
             subject_data.append(d.get(field))
 
+
         if (d.planned_start_date is None):
             color = '#D3D3D3'
             start_date = d.initial_start_date
             end_date = d.initial_end_date
         else:
             color = event_color.get(d.status)
+            print('toto')
+            print(d.status)
+            print(color)
             start_date = d.planned_start_date
             end_date = d.planned_start_end
 
@@ -89,7 +93,7 @@ def get_jobcard_planning_details(start, end, filters=None):
             "planned_end_date": end_date,
             "name": d.name,
             "subject": "\n".join(subject_data),
-            "color": color if color else "#89bcde",
+            "color": color,
         }
 
         events.append(job_card_data)
