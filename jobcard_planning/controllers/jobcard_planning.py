@@ -7,9 +7,8 @@ def get_jobcard_planning_details(start, end, filters=None):
     events = []
 
     event_color = {
-        "Not Planned": "#cdf5a6",
-        "Material Transferred": "#ffdd9e",
-        "Work In Progress": "#D3D3D3",
+        "Material Transferred": "blue",
+        "Work In Progress": "orange",
     }
 
     from frappe.desk.reportview import get_filters_cond
@@ -17,13 +16,25 @@ def get_jobcard_planning_details(start, end, filters=None):
     conditions = get_filters_cond("Job Card", filters, [])
 
     job_cards = frappe.db.sql(
-        """ SELECT `tabJob Card`.name, `tabJob Card`.work_order,
+        """  SELECT `tabJob Card`.name, `tabJob Card`.work_order,
             `tabJob Card`.status, ifnull(`tabJob Card`.remarks, ''),
-            min(`tabJob Card Time Log`.from_time) as initial_start_date
+            `tabJob Card`.operation,
+            `tabCustomer`.customer_name,
+            tabItem.item_name,
+            `tabJob Card`.planned_start_date,
+            `tabJob Card`.planned_end_date,
+            `tabJob Card`.planned_employee_name,
+            min(`tabJob Card Time Log`.from_time) as initial_start_date,
+            max(`tabJob Card Time Log`.from_time) as initial_end_date
         FROM `tabJob Card` INNER JOIN `tabJob Card Time Log`
         ON `tabJob Card`.name = `tabJob Card Time Log`.parent
+        INNER JOIN `tabWork Order` ON `tabWork Order`.name=`tabJob Card`.work_order
+        INNER JOIN `tabItem` ON `tabItem`.item_name=`tabWork Order`.item_name
+        LEFT JOIN `tabSales Order` ON `tabSales Order`.name=`tabWork Order`.sales_order
+        LEFT JOIN `tabCustomer` ON `tabCustomer`.name=`tabSales Order`.customer
         WHERE
-             1=1 {0}
+             `tabJob Card`.status<>'Completed'
+             {0}
             group by `tabJob Card`.name""".format(
             conditions
         ),
@@ -57,20 +68,24 @@ def get_jobcard_planning_details(start, end, filters=None):
 
     for d in job_cards:
         subject_data = []
-        for field in ["name", "work_order", "remarks"]:
+        for field in ["customer_name", "item_name", "operation", "planned_employee_name", "work_order"]:
             if not d.get(field):
                 continue
 
             subject_data.append(d.get(field))
 
         if (d.planned_start_date is None):
-            color = '#bf6220'
+            color = '#D3D3D3'
+            start_date = d.initial_start_date
+            end_date = d.initial_end_date
         else:
             color = event_color.get(d.status)
+            start_date = d.planned_start_date
+            end_date = d.planned_start_end
 
         job_card_data = {
-            "from_time": d.initial_start_date,
-            "to_time": d.initial_start_date,
+            "planned_start_date": start_date,
+            "planned_end_date": end_date,
             "name": d.name,
             "subject": "\n".join(subject_data),
             "color": color if color else "#89bcde",
@@ -81,11 +96,11 @@ def get_jobcard_planning_details(start, end, filters=None):
     return events
 
 @frappe.whitelist()
-def update_event_custom(args, field_map):
-	"""Updates Event (called via calendar) based on passed `field_map`"""
-	args = frappe._dict(json.loads(args))
-	field_map = frappe._dict(json.loads(field_map))
-	w = frappe.get_doc(args.doctype, args.name)
-	w.set(field_map.start, args[field_map.start])
-	w.set(field_map.end, args.get(field_map.end))
-	w.save()
+def update_jobcard_planned_date(args, field_map):
+    """Updates Event (called via calendar) based on passed `field_map`"""
+    args = frappe._dict(json.loads(args))
+    field_map = frappe._dict(json.loads(field_map))
+    w = frappe.get_doc(args.doctype, args.name)
+    w.set(field_map.start, args[field_map.start])
+    w.set(field_map.end, args.get(field_map.end))
+    w.save()

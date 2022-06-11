@@ -9,31 +9,18 @@
 frappe.views.Calendar = frappe.views.Calendar.extend({
 
   init: function(options) {
-		$.extend(true, this, options);
+    this._super(options);
     if (this.list_view.calendar_name=='Job Card Planning') {
       this.get_events_method='jobcard_planning.controllers.jobcard_planning.get_jobcard_planning_details';
-
       this.field_map= {
-        "start": "from_time",
-        "end": "to_time",
+        "start": "planned_start_date",
+        "end": "planned_end_date",
         "id": "name",
         "title": "subject",
         "color": "color",
         "allDay": "allDay",
         "progress": "progress"
       };
-
-      // this.gantt= {
-      //   field_map: {
-      //     "start": "started_time",
-      //     "end": "started_time",
-      //     "id": "name",
-      //     "title": "subject",
-      //     "color": "color",
-      //     "allDay": "allDay",
-      //     "progress": "progress"
-      //   }
-      // };
 
       this.filters= [
         {
@@ -43,7 +30,7 @@ frappe.views.Calendar = frappe.views.Calendar.extend({
           "label": __("Planned Employee")
         }
       ];
+      this.update_event_method='jobcard_planning.controllers.jobcard_planning.update_jobcard_planned_date';
      }
-		this.get_default_options();
 	},
 })

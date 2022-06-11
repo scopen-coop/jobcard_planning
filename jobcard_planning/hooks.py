@@ -150,9 +150,9 @@ doctype_calendar_js = {"Job Card" : "public/js/job_card_calendar.js"}
 # Overriding Methods
 # ------------------------------
 #
-override_whitelisted_methods = {
-	"frappe.desk.calendar.update_event": "jobcard_planning.controllers.jobcard_planning.update_event_custom"
-}
+# override_whitelisted_methods = {
+# 	"frappe.desk.calendar.update_event": "jobcard_planning.controllers.jobcard_planning.update_event_custom"
+# }
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
