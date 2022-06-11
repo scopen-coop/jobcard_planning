@@ -36,10 +36,11 @@ frappe.views.Calendar = frappe.views.Calendar.extend({
 
   update_event: function(event, revertFunc) {
     if (this.list_view.calendar_name=='Job Card Planning') {
-      event.color='#d159c7';
-      event.backgroundColor='#d159c7';
+      event.color='#0ecbb1';
+      event.backgroundColor='#0ecbb1';
       this.$cal.fullCalendar("updateEvent",event);
     }
-     this._super(event, revertFunc);
+    this._super(event, revertFunc);
+
   }
 })
