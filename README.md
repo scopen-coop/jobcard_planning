@@ -14,7 +14,7 @@ Sur vue calendrier des Carte de travail, selectionner le Calendrier Job Card Pla
 
 Les cartes de travail grises sont celles qui n'ont pas de date prévisionnelles.
 
-Une fois plannifiés elles passent en bleue, au recahrgement elles prennent la coleur de leurs statuts
+Une fois plannifiés elles passent en bleue, au rechargement elles prennent la coleur de leurs statuts
 
 EN
 
