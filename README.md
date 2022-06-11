@@ -12,6 +12,9 @@ EN
 
 Add Job Card Calendar vue and allow the to plan them but grap and drop
 
+![image](https://user-images.githubusercontent.com/1050053/173192435-2a46ee70-080a-4175-8120-b3eaa870928e.png)
+
+
 
 #### License
 
