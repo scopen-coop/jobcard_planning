@@ -17,14 +17,15 @@ Les cartes de travail grises sont celles qui n'ont pas de date prévisionnelles.
 Une fois plannifiés elles passent en bleue, au rechargement elles prennent la coleur de leurs statuts
 
 EN
+This Apps 
 
-Add Job Card Calendar view and allow the to plan them by drap and drop
+- Add Job Card Calendar view and allow the to plan them by drap and drop
 
-Add 4 fields on Job Card : Planned date start, Planned end Date, Planned Employee, Planned Employee Name
+- Add 4 fields on Job Card : Planned date start, Planned end Date, Planned Employee, Planned Employee Name
 
 On calendar Job Card View, select de calendar Job Card Planning.
 
-Gray card are those without planned date. On planned the go in blue. On Reolad the get colors of their status
+Gray cards are those without planned date. On planned the go in blue. On Reolad the get colors of their status
 
 ![image](https://user-images.githubusercontent.com/1050053/173192435-2a46ee70-080a-4175-8120-b3eaa870928e.png)
 
