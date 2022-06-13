@@ -25,6 +25,10 @@ fixtures = [
     {
         "dt": ("Calendar View"),
         "filters": [["name", "in", ('Job Card Planning')]]
+    },
+    {
+        "dt": ("Report"),
+        "filters": [["name", "in", ('Job Card Planning Qty')]]
     }
 ]
 
