@@ -54,9 +54,9 @@ fixtures = [
 
 # include js in doctype views
 # doctype_js = {"doctype" : "public/js/doctype.js"}
-# doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
+doctype_list_js = {"Job Card": "public/js/job_card_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
-doctype_calendar_js = {"Job Card" : "public/js/job_card_calendar.js"}
+doctype_calendar_js = {"Job Card": "public/js/job_card_calendar.js"}
 
 # Home Pages
 # ----------
