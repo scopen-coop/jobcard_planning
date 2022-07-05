@@ -26,8 +26,9 @@ def get_jobcard_planning_details(start, end, filters=None):
             `tabJob Card`.planned_end_date,
             `tabJob Card`.planned_employee_name,
             min(`tabJob Card Time Log`.from_time) as initial_start_date,
-            max(`tabJob Card Time Log`.from_time) as initial_end_date
-        FROM `tabJob Card` INNER JOIN `tabJob Card Time Log`
+            max(`tabJob Card Time Log`.from_time) as initial_end_date,
+            `tabWork Order`.planned_start_date as work_order_planned_start_date
+        FROM `tabJob Card` LEFT JOIN `tabJob Card Time Log`
         ON `tabJob Card`.name = `tabJob Card Time Log`.parent
         INNER JOIN `tabWork Order` ON `tabWork Order`.name=`tabJob Card`.work_order
         INNER JOIN `tabItem` ON `tabItem`.item_name=`tabWork Order`.item_name
@@ -78,13 +79,14 @@ def get_jobcard_planning_details(start, end, filters=None):
 
         if (d.planned_start_date is None):
             color = '#D3D3D3'
-            start_date = d.initial_start_date
-            end_date = d.initial_end_date
+            if d.initial_start_date is None:
+                start_date = d.work_order_planned_start_date
+                end_date = d.work_order_planned_start_date
+            else:
+                start_date = d.initial_end_date
+                end_date = d.initial_end_date
         else:
             color = event_color.get(d.status)
-            print('toto')
-            print(d.status)
-            print(color)
             start_date = d.planned_start_date
             end_date = d.planned_start_end
 
