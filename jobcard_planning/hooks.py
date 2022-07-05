@@ -16,10 +16,12 @@ fixtures = [
         "dt": ("Custom Field"),
         "filters": [["name", "in",
                      (
+                         "Job Card-planification",
                          "Job Card-planned_start_date",
                          "Job Card-planned_end_date",
                          "Job Card-planned_employee",
-                         "Job Card-planned_employee_name",)]
+                         "Job Card-planned_employee_name",
+                         "Job Card-sales_order",)]
                     ]
     },
     {
