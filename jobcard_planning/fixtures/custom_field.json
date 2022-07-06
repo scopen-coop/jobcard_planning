@@ -34,7 +34,7 @@
   "name": "Job Card-sales_order",
   "no_copy": 1,
   "non_negative": 0,
-  "options": "Work Order",
+  "options": "Sales Order",
   "parent": null,
   "parentfield": null,
   "parenttype": null,
