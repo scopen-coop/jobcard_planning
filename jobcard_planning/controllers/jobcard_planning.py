@@ -88,7 +88,7 @@ def get_jobcard_planning_details(start, end, filters=None):
         else:
             color = event_color.get(d.status)
             start_date = d.planned_start_date
-            end_date = d.planned_start_end
+            end_date = d.planned_end_date
 
         job_card_data = {
             "planned_start_date": start_date,
