@@ -1,5 +1,4 @@
 import frappe, json
-from six import string_types
 
 @frappe.whitelist()
 def get_jobcard_planning_details(start, end, filters=None):
@@ -110,4 +109,3 @@ def update_jobcard_planned_date(args, field_map):
     w = frappe.get_doc(args.doctype, args.name)
     w.db_set(field_map.start, args[field_map.start])
     w.db_set(field_map.end, args.get(field_map.end))
-    #w.save()

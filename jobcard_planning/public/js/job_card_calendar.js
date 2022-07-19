@@ -2,6 +2,9 @@ frappe.views.Calendar = frappe.views.Calendar.extend({
 
   init: function(options) {
     options.page.custom_actions.removeClass('hidden-md');
+    options.page.custom_actions.find('.sort-selector').addClass('hidden-md');
+    //options.page.sort_selector.addClass('hidden-md');
+
     this._super(options);
     if (this.list_view.calendar_name=='Job Card Planning') {
       this.get_events_method='jobcard_planning.controllers.jobcard_planning.get_jobcard_planning_details';
@@ -35,23 +38,7 @@ frappe.views.Calendar = frappe.views.Calendar.extend({
     }
     this._super(event, revertFunc);
   }
-  /*,
-  render: function() {
-    console.log('toiiiii')
-    this._super();
-     console.log('toto')
-      $('div.custom-actions').removeClass('hidden-md');
-      $('div.sort-selector').addClass('hidden-md');
-      $('div.custom-btn-group').addClass('hidden-md');
-    }*/
 })
 
-/*$.extend(frappe.views.calendar['Job Card'], {
-   onload(calendarView) {
-      console.log(calendarView);
-      $('div.custom-actions').removeClass('hidden-md');
-      $('div.sort-selector').addClass('hidden-md');
-      $('div.custom-btn-group').addClass('hidden-md');
-    }
-})*/
+
 
