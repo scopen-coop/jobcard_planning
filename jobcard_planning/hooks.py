@@ -21,7 +21,8 @@ fixtures = [
                          "Job Card-planned_end_date",
                          "Job Card-planned_employee",
                          "Job Card-planned_employee_name",
-                         "Job Card-sales_order",)]
+                         "Job Card-sales_order",
+                         "Job Card-expected_delivery_date",)]
                     ]
     },
     {
@@ -119,6 +120,11 @@ doctype_calendar_js = {"Job Card": "public/js/job_card_calendar.js"}
 # ---------------
 # Hook on document methods and events
 
+doc_events = {
+    ("Work Order"): {
+        "on_change": "jobcard_planning.custom_scripts_py.work_order.upd_work_order"
+    },
+}
 # doc_events = {
 # 	"*": {
 # 		"on_update": "method",

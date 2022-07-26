@@ -1,3 +1,5 @@
+import datetime
+
 import frappe, json
 
 @frappe.whitelist()
@@ -26,7 +28,8 @@ def get_jobcard_planning_details(start, end, filters=None):
             `tabJob Card`.planned_employee_name,
             min(`tabJob Card Time Log`.from_time) as initial_start_date,
             max(`tabJob Card Time Log`.from_time) as initial_end_date,
-            `tabWork Order`.planned_start_date as work_order_planned_start_date
+            `tabWork Order`.planned_start_date as work_order_planned_start_date,
+            `tabJob Card`.expected_delivery_date
         FROM `tabJob Card` LEFT JOIN `tabJob Card Time Log`
         ON `tabJob Card`.name = `tabJob Card Time Log`.parent
         INNER JOIN `tabWork Order` ON `tabWork Order`.name=`tabJob Card`.work_order
@@ -69,11 +72,16 @@ def get_jobcard_planning_details(start, end, filters=None):
 
     for d in job_cards:
         subject_data = []
-        for field in ["customer_name", "item_name", "operation", "planned_employee_name", "work_order"]:
+        for field in ["customer_name", "item_name", "operation", "planned_employee_name", "work_order"
+            , "expected_delivery_date"]:
             if not d.get(field):
                 continue
 
-            subject_data.append(d.get(field))
+            if type(d.get(field)) is datetime.date:
+                data_txt = d.get(field).strftime('%Y-%m-%d')
+            else:
+                data_txt = d.get(field)
+            subject_data.append(data_txt)
 
 
         if (d.planned_start_date is None):
