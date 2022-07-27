@@ -1,6 +1,10 @@
 import datetime
 
 import frappe, json
+from frappe.utils import get_user_date_format
+from frappe.utils.dateutils import dateformats
+
+
 
 @frappe.whitelist()
 def get_jobcard_planning_details(start, end, filters=None):
@@ -72,13 +76,13 @@ def get_jobcard_planning_details(start, end, filters=None):
 
     for d in job_cards:
         subject_data = []
-        for field in ["customer_name", "item_name", "operation", "planned_employee_name", "work_order"
-            , "expected_delivery_date"]:
+        for field in ["customer_name", "item_name", "operation", "planned_employee_name", "work_order",
+                      "expected_delivery_date"]:
             if not d.get(field):
                 continue
 
             if type(d.get(field)) is datetime.date:
-                data_txt = d.get(field).strftime('%Y-%m-%d')
+                data_txt = d.get(field).strftime(dateformats[get_user_date_format()])
             else:
                 data_txt = d.get(field)
             subject_data.append(data_txt)
