@@ -31,8 +31,8 @@ def get_jobcard_planning_details(start, end, filters=None):
             `tabJob Card`.planned_start_date,
             `tabJob Card`.planned_end_date,
             `tabJob Card`.planned_employee_name,
-            `tabJob Card`.qty_to_manufacture_per_day,
             `tabJob Card`.for_quantity,
+            `tabJob Card`.qty_to_manufacture_per_day,
             min(`tabJob Card Time Log`.from_time) as initial_start_date,
             max(`tabJob Card Time Log`.from_time) as initial_end_date,
             `tabWork Order`.planned_start_date as work_order_planned_start_date,
@@ -49,7 +49,7 @@ def get_jobcard_planning_details(start, end, filters=None):
             group by `tabJob Card`.name""".format(
             conditions
         ),
-        as_dict=1,
+        as_dict=1,debug=1
     )
 
     # Attemp to make it with query Builder, but there is no
@@ -79,7 +79,7 @@ def get_jobcard_planning_details(start, end, filters=None):
 
     for d in job_cards:
         subject_data = []
-        for field in ["customer_name", "item_name", "for_quantity"
+        for field in ["customer_name", "item_name", "for_quantity",
                       "operation", "planned_employee_name", "work_order",
                       "expected_delivery_date"]:
             if not d.get(field):
@@ -88,15 +88,13 @@ def get_jobcard_planning_details(start, end, filters=None):
             if type(d.get(field)) is datetime.date:
                 data_txt = d.get(field).strftime(dateformats[get_user_date_format()])
             elif field == 'for_quantity':
-                data_txt = _("Qty Tot.")+':'+d.get(field)
+
+                data_txt = _("Qty Tot.")+':'+str(d.get(field))
                 if d.get("qty_to_manufacture_per_day"):
-                    data_txt = " "+_("Qty p. Day")+':'+d.get("qty_to_manufacture_per_day")
+                    data_txt += " "+_("Qty p. Day")+':'+str(d.get("qty_to_manufacture_per_day"))
             else:
                 data_txt = d.get(field)
             subject_data.append(data_txt)
-
-
-
 
         if (d.planned_start_date is None):
             color = '#D3D3D3'
