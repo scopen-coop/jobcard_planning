@@ -4,8 +4,9 @@ Planned Employee Name,Nom de l'employé.e prévu.e
 Job Card Planning Qty,Quantité prévue et réalisée par carte de travail planifiée
 Qty To Produce,Quantité à produire
 Qty Produced,Quantité produite
-Job Card - Qty To Produce,Cate de travail - Quantité à produire
-Job Card - Qty Produced,Cate de travail - Quantité produite
+Job Card - Qty To Produce,C.T. - Qté à produire
+Job Card - Qty Produced,C.T. - Qté produite
+Job Card - Qty To Produce Per Day, C.T. - Qté à produire par jour
 Work Order - Status,Statut de l'ordre de travail
 Job Card - Status, Statut de la carte de travail
 Qty To Manufacture Per Day,Quantité à produire par jour
