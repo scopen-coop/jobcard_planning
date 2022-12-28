@@ -1,6 +1,8 @@
 frappe.views.Calendar = frappe.views.Calendar.extend({
 
   init: function(options) {
+
+    //On small screen resolution the Report select Type must be available to select Calendar Type
     options.page.custom_actions.removeClass('hidden-md');
     options.page.custom_actions.find('.sort-selector').addClass('hidden-md');
     //options.page.sort_selector.addClass('hidden-md');
@@ -39,6 +41,3 @@ frappe.views.Calendar = frappe.views.Calendar.extend({
     this._super(event, revertFunc);
   }
 })
-
-
-
