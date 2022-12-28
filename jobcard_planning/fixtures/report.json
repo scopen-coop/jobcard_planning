@@ -30,11 +30,11 @@
     "wildcard_filter": 0
    }
   ],
-  "is_standard": "Yes",
+  "is_standard": "No",
   "javascript": null,
   "json": null,
   "letter_head": "",
-  "modified": "2022-12-28 10:27:41.360625",
+  "modified": "2022-12-28 12:12:41.360625",
   "module": "Manufacturing",
   "name": "Job Card Planning Qty",
   "parent": null,
