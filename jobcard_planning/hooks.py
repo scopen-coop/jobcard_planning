@@ -22,7 +22,8 @@ fixtures = [
                          "Job Card-planned_employee",
                          "Job Card-planned_employee_name",
                          "Job Card-sales_order",
-                         "Job Card-expected_delivery_date",)]
+                         "Job Card-expected_delivery_date",
+                         "Job Card-qty_to_manufacture_per_day",)]
                     ]
     },
     {
