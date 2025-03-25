@@ -1,3 +1,8 @@
+## Archived App
+This Frappe/ERPNext application is no longer maintained.
+The only working version is for [version-13](https://github.com/scopen-coop/jobcard_planning/tree/version-13), other branches are test to make it available, but as change of Frappe framework it's no more possible to change feature for calendar view like we designed it for version-13
+
+
 ## Job Card Planner
 App ERPNext
 bench get-app git@github.com:scopen-coop/jobcard_planning.git
