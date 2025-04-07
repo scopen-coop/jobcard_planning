@@ -24,7 +24,7 @@ Une fois plannifiés elles passent en bleue, au rechargement elles prennent la c
 EN
 This Apps 
 
-- Add Job Card Calendar view and allow the to plan them by drap and drop
+- Add Job Card Calendar view and allow the to plan them by drag and drop
 
 - Add 4 fields on Job Card : Planned date start, Planned end Date, Planned Employee, Planned Employee Name
 
